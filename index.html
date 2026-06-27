@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>enterenterenterenter</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="grain" aria-hidden="true"></div>
+
+  <!-- SVG filters -->
+  <svg style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true">
+    <defs>
+      <filter id="knock-white" x="0%" y="0%" width="100%" height="100%"
+              color-interpolation-filters="sRGB">
+        <feColorMatrix type="matrix"
+          values="1 0 0 0 0
+                  0 1 0 0 0
+                  0 0 1 0 0
+                 -3 -3 -3 0 5"/>
+      </filter>
+    </defs>
+  </svg>
+
+  <!-- landing popup -->
+  <div class="popup" id="popup">
+    <div class="popup-titlebar">
+      <span class="popup-icon">⚠</span>
+      <span class="popup-title-text">visitor.exe</span>
+      <span class="popup-controls">
+        <button class="ctrl-btn" tabindex="-1">_</button>
+        <button class="ctrl-btn" tabindex="-1">□</button>
+        <button class="ctrl-btn ctrl-x" tabindex="-1">✕</button>
+      </span>
+    </div>
+    <div class="popup-body">
+      <p class="popup-message">welcome back.</p>
+      <button class="popup-ok" id="ok-btn">OK</button>
+    </div>
+  </div>
+
+  <!-- spinner popup -->
+  <div class="popup spinner-popup" id="spinner-popup">
+    <div class="popup-titlebar">
+      <span class="popup-icon">★</span>
+      <span class="popup-title-text">prize wheel.exe</span>
+      <span class="popup-controls">
+        <button class="ctrl-btn" tabindex="-1">_</button>
+        <button class="ctrl-btn" tabindex="-1">□</button>
+        <button class="ctrl-btn ctrl-x" tabindex="-1">✕</button>
+      </span>
+    </div>
+    <div class="popup-body spinner-body">
+      <div class="wheel-wrap">
+        <div class="wheel-pointer">▼</div>
+        <canvas id="wheel-canvas" width="280" height="280"></canvas>
+      </div>
+      <button class="popup-ok" id="spin-btn">SPIN</button>
+    </div>
+  </div>
+
+  <!-- mouth -->
+  <div class="scene" id="scene">
+    <div class="mouth-half mouth-top" id="mouth-top"></div>
+    <div class="mouth-half mouth-bottom" id="mouth-bottom"></div>
+  </div>
+
+  <!-- room one: the void -->
+  <div class="void" id="void">
+    <div class="void-bg"></div>
+
+    <div class="guide" id="guide">
+      <img src="assets/guide 1.jpg" class="guide-img" alt="your guide" />
+    </div>
+
+    <div class="bubble" id="bubble">
+      <img src="assets/speech bubble.png" class="bubble-img" alt="" />
+      <p class="bubble-text">You will always<br>have a choice</p>
+    </div>
+
+    <!-- hidden skull trigger -->
+    <button class="skull-trigger" id="skull-trigger" aria-label="something">
+      <img src="assets/emoji.jpg" alt="" />
+    </button>
+  </div>
+
+  <!-- room two: tv room -->
+  <div class="room-two" id="room-two">
+
+    <!-- ── row 1 ── -->
+    <!-- shell 1: vintage wood CRT -->
+    <div class="tv-set" data-room="3" style="--tx:2%;--ty:2%;--tw:215px;--tr:-2deg">
+      <div class="tv-screen" style="--sl:8.5%;--st:24.2%;--sw:64.5%;--sh:46.7%">
+        <img class="tv-gif" src="assets/tv 1.gif" alt="">
+      </div>
+      <img class="tv-shell" src="assets/shell 1_cut.png" alt="">
+    </div>
+
+    <!-- shell 2: Tamagotchi -->
+    <div class="tv-set" data-room="4" style="--tx:28%;--ty:1%;--tw:170px;--tr:2deg">
+      <div class="tv-screen" style="--sl:15.4%;--st:28.2%;--sw:53.8%;--sh:49.9%">
+        <img class="tv-gif" src="assets/tv 2.gif" alt="">
+      </div>
+      <img class="tv-shell" src="assets/shell 2_cut.png" alt="">
+    </div>
+
+    <!-- shell 3: Panasonic camcorder flip screen -->
+    <div class="tv-set" data-room="5" style="--tx:50%;--ty:2%;--tw:200px;--tr:-1deg">
+      <div class="tv-screen" style="--sl:10.7%;--st:28.0%;--sw:43.7%;--sh:40.8%">
+        <img class="tv-gif" src="assets/tv 3.gif" alt="">
+      </div>
+      <img class="tv-shell" src="assets/shell 3_cut.png" alt="">
+    </div>
+
+    <!-- shell 4: Winamp face -->
+    <div class="tv-set" data-room="6" style="--tx:76%;--ty:2%;--tw:165px;--tr:3deg">
+      <div class="tv-screen" style="--sl:19.6%;--st:15.2%;--sw:60.8%;--sh:39.1%">
+        <img class="tv-gif" src="assets/tv 4.gif" alt="">
+      </div>
+      <img class="tv-shell" src="assets/shell 4_cut.png" alt="">
+    </div>
+
+    <!-- ── row 2 ── -->
+    <!-- shell 5: Queen of Hearts card -->
+    <div class="tv-set" data-room="7" style="--tx:2%;--ty:35%;--tw:130px;--tr:3deg">
+      <div class="tv-screen" style="--sl:6.4%;--st:16.8%;--sw:83.5%;--sh:64.9%">
+        <img class="tv-gif" src="assets/tv 5.gif" alt="">
+      </div>
+      <img class="tv-shell" src="assets/shell 5_cut.png" alt="">
+    </div>
+
+    <!-- shell 6: vintage face illustration -->
+    <div class="tv-set" data-room="8" style="--tx:74%;--ty:35%;--tw:170px;--tr:-2deg">
+      <div class="tv-screen" style="--sl:15.9%;--st:29.0%;--sw:72.2%;--sh:55.6%">
+        <img class="tv-gif" src="assets/tv 6.gif" alt="">
+      </div>
+      <img class="tv-shell" src="assets/shell 6_cut.png" alt="">
+    </div>
+
+    <!-- shell 7: Sony Ericsson phone -->
+    <div class="tv-set" data-room="9" style="--tx:52%;--ty:35%;--tw:110px;--tr:1deg">
+      <div class="tv-screen" style="--sl:13.3%;--st:10.1%;--sw:73.1%;--sh:37.4%">
+        <img class="tv-gif" src="assets/tv 7.gif" alt="">
+      </div>
+      <img class="tv-shell" src="assets/shell 7_cut.png" alt="">
+    </div>
+
+    <!-- shell 8: iPod classic -->
+    <div class="tv-set" data-room="10" style="--tx:32%;--ty:35%;--tw:150px;--tr:-3deg">
+      <div class="tv-screen" style="--sl:8.7%;--st:6.1%;--sw:81.7%;--sh:40.9%">
+        <img class="tv-gif" src="assets/tv 8.gif" alt="">
+      </div>
+      <img class="tv-shell" src="assets/shell 8_cut.png" alt="">
+    </div>
+
+    <!-- ── row 3 ── -->
+    <!-- shell 9: Sidekick / Hiptop -->
+    <div class="tv-set" data-room="11" style="--tx:3%;--ty:66%;--tw:200px;--tr:2deg">
+      <div class="tv-screen" style="--sl:25.3%;--st:9.1%;--sw:47.2%;--sh:33.1%">
+        <img class="tv-gif" src="assets/tv 9 .gif" alt="">
+      </div>
+      <img class="tv-shell" src="assets/shell 9_cut.png" alt="">
+    </div>
+
+    <!-- shell 10: Winamp cyber channel -->
+    <div class="tv-set" data-room="12" style="--tx:28%;--ty:66%;--tw:215px;--tr:-2deg">
+      <div class="tv-screen" style="--sl:11.5%;--st:8.9%;--sw:33.7%;--sh:31.0%">
+        <img class="tv-gif" src="assets/tv 10.gif" alt="">
+      </div>
+      <img class="tv-shell" src="assets/shell 10_cut.png" alt="">
+    </div>
+
+    <!-- shell 11: Philips CRT monitor -->
+    <div class="tv-set" data-room="13" style="--tx:54%;--ty:66%;--tw:175px;--tr:1deg">
+      <div class="tv-screen" style="--sl:7.6%;--st:10.1%;--sw:84.7%;--sh:64.7%">
+        <img class="tv-gif" src="assets/tv 11.gif" alt="">
+      </div>
+      <img class="tv-shell" src="assets/shell 11_cut.png" alt="">
+    </div>
+
+    <!-- shell 12: Windows Notepad -->
+    <div class="tv-set" data-room="14" style="--tx:78%;--ty:64%;--tw:120px;--tr:-2deg">
+      <div class="tv-screen" style="--sl:20.6%;--st:17.5%;--sw:57.2%;--sh:68.1%">
+        <img class="tv-gif" src="assets/tv 12.gif" alt="">
+      </div>
+      <img class="tv-shell" src="assets/shell 12_cut.png" alt="">
+    </div>
+
+  </div>
+
+  <!-- rooms 3–14 (placeholders) -->
+  <div class="deep-room" id="room-3"><span>room 3</span></div>
+  <div class="deep-room" id="room-4"><span>room 4</span></div>
+  <div class="deep-room" id="room-5"><span>room 5</span></div>
+  <div class="deep-room" id="room-6"><span>room 6</span></div>
+  <div class="deep-room" id="room-7"><span>room 7</span></div>
+  <div class="deep-room" id="room-8"><span>room 8</span></div>
+  <div class="deep-room" id="room-9"><span>room 9</span></div>
+  <div class="deep-room" id="room-10"><span>room 10</span></div>
+  <div class="deep-room" id="room-11"><span>room 11</span></div>
+  <div class="deep-room" id="room-12"><span>room 12</span></div>
+  <div class="deep-room" id="room-13"><span>room 13</span></div>
+  <div class="deep-room" id="room-14"><span>room 14</span></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
