@@ -349,6 +349,8 @@ html, body {
 
 #wheel-canvas {
   display: block;
+  max-width: 100%;
+  height: auto;
   border-radius: 50%;
   box-shadow: 2px 2px 0 rgba(0,0,0,0.2);
 }
@@ -440,4 +442,52 @@ html, body {
   color: #2a1a2a;
   font-size: 14px;
   letter-spacing: 0.3em;
+}
+
+/* ── MOBILE ──────────────────────────────────────────────── */
+@media (max-width: 640px) {
+
+  /* popups never wider than the screen */
+  .popup        { width: min(290px, 90vw); }
+  .spinner-popup { width: min(320px, 92vw); }
+
+  /* void: shrink guide and pull the speech bubble back on-screen */
+  .guide-img {
+    width: min(220px, 62vw);
+  }
+
+  .bubble {
+    left: auto;
+    right: 6vw;
+    bottom: 52vh;
+    width: 120px;
+  }
+
+  /* bigger tap target for the hidden trigger */
+  .skull-trigger {
+    width: 44px;
+    height: 44px;
+    bottom: 10vh;
+  }
+
+  /* TV room: reflow the absolute collage into a scrollable 2-up grid */
+  .room-two.open {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    align-content: flex-start;
+    justify-content: center;
+    gap: 20px 16px;
+    padding: 26px 16px 56px;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .tv-set {
+    position: relative;
+    left: auto;
+    top: auto;
+    width: 42vw;
+    max-width: 210px;
+  }
 }
