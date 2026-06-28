@@ -6,9 +6,9 @@ const sfx = {
   ambient: new Audio('assets/sounds/ambient.wav'),
 };
 sfx.ambient.loop   = true;
-sfx.ambient.volume = 0.35;
-sfx.chomp.volume   = 0.8;
-sfx.spin.volume    = 0.6;
+sfx.ambient.volume = 0.55;
+sfx.chomp.volume   = 1.0;
+sfx.spin.volume    = 0.85;
 
 // play a one-shot from the start; swallow autoplay/missing-file errors
 function playSfx(name) {
