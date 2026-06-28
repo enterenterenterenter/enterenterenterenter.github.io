@@ -1,3 +1,23 @@
+// ── SOUND ────────────────────────────────────────────────
+// Files live in assets/sounds/ — missing files fail silently.
+const sfx = {
+  chomp:   new Audio('assets/sounds/chomp.wav'),
+  spin:    new Audio('assets/sounds/spin.wav'),
+  ambient: new Audio('assets/sounds/ambient.wav'),
+};
+sfx.ambient.loop   = true;
+sfx.ambient.volume = 0.35;
+sfx.chomp.volume   = 0.8;
+sfx.spin.volume    = 0.6;
+
+// play a one-shot from the start; swallow autoplay/missing-file errors
+function playSfx(name) {
+  const a = sfx[name];
+  if (!a) return;
+  try { a.currentTime = 0; } catch (_) {}
+  a.play().catch(() => {});
+}
+
 // ── LANDING ──────────────────────────────────────────────
 const popup     = document.getElementById('popup');
 const okBtn     = document.getElementById('ok-btn');
@@ -10,11 +30,16 @@ okBtn.addEventListener('click', eat);
 okBtn.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') eat(); });
 
 function eat() {
+  playSfx('chomp');
   popup.classList.add('hiding');
   popup.addEventListener('animationend', () => popup.style.display = 'none', { once: true });
   mouthTop.classList.add('split');
   mouthBot.classList.add('split');
-  setTimeout(() => voidEl.classList.add('open'), 400);
+  setTimeout(() => {
+    voidEl.classList.add('open');
+    // ambient drone for the alien/Virgil page (this click is the user gesture)
+    sfx.ambient.play().catch(() => {});
+  }, 400);
 }
 
 // ── SKULL TRIGGER ────────────────────────────────────────
@@ -95,6 +120,7 @@ spinBtn.addEventListener('click', () => {
   spinning = true;
   spinBtn.disabled = true;
   spinBtn.textContent = '...';
+  playSfx('spin');
 
   // random extra rotations (8-14 full turns) + random landing offset
   const extraRotation = (8 + Math.random() * 6) * 2 * Math.PI;
@@ -117,6 +143,8 @@ spinBtn.addEventListener('click', () => {
       rafId = requestAnimationFrame(frame);
     } else {
       spinning = false;
+      // stop the spin sound in sync with the wheel landing
+      sfx.spin.pause();
       // brief pause then enter room two
       setTimeout(enterRoomTwo, 900);
     }
@@ -126,6 +154,16 @@ spinBtn.addEventListener('click', () => {
 });
 
 function enterRoomTwo() {
+  // fade out the alien-page ambient drone
+  const fade = setInterval(() => {
+    if (sfx.ambient.volume > 0.04) {
+      sfx.ambient.volume -= 0.04;
+    } else {
+      sfx.ambient.pause();
+      clearInterval(fade);
+    }
+  }, 60);
+
   spinnerPopup.classList.add('hiding');
   spinnerPopup.addEventListener('animationend', () => {
     spinnerPopup.style.display = 'none';
