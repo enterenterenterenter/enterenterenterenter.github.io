@@ -174,9 +174,89 @@ function enterRoomTwo() {
 
 // ── TV CLICKS → DEEP ROOMS ────────────────────────────────
 document.querySelectorAll('.tv-set').forEach(tv => {
+  // the wood-CRT bird gets its own riddle, handled below
+  if (tv.id === 'bird-tv') return;
   tv.addEventListener('click', () => {
     const roomId = 'room-' + tv.dataset.room;
     const target = document.getElementById(roomId);
     if (target) target.classList.add('open');
   });
+});
+
+// ── BIRD → WINGSPAN RIDDLE ────────────────────────────────
+const birdTv        = document.getElementById('bird-tv');
+const wingspanPopup = document.getElementById('wingspan-popup');
+const wingspanInput = document.getElementById('wingspan-input');
+const wingspanOk    = document.getElementById('wingspan-ok');
+const wingspanSure  = document.getElementById('wingspan-sure');
+const blissRoom     = document.getElementById('bliss-room');
+const readmePopup   = document.getElementById('readme-popup');
+const readmeOk      = document.getElementById('readme-ok');
+const readmeClose   = document.getElementById('readme-close');
+const paintRoom     = document.getElementById('paint-room');
+const paintClose    = document.getElementById('paint-close');
+const wingspanFeed  = document.getElementById('wingspan-feedback');
+
+const SURE_VIDEO      = 'https://youtu.be/B4LFYs3VpxY?si=L6_fmRXNm73kY_CW';
+const WINGSPAN_ANSWERS = ['10', 'ten'];
+
+birdTv.addEventListener('click', () => {
+  wingspanPopup.classList.add('visible');
+  wingspanInput.value = '';
+  wingspanFeed.textContent = '';
+  setTimeout(() => wingspanInput.focus(), 120);
+});
+
+function checkWingspan() {
+  const answer = wingspanInput.value.trim().toLowerCase();
+  if (WINGSPAN_ANSWERS.includes(answer)) {
+    wingspanFeed.textContent = '';
+    wingspanPopup.classList.remove('visible');
+    blissRoom.classList.add('open');
+  } else {
+    // wrong: feedback, shake, clear
+    wingspanFeed.textContent = 'incorrect';
+    wingspanPopup.classList.remove('shake');
+    void wingspanPopup.offsetWidth; // restart animation
+    wingspanPopup.classList.add('shake');
+    wingspanInput.value = '';
+    wingspanInput.focus();
+  }
+}
+
+wingspanOk.addEventListener('click', checkWingspan);
+wingspanInput.addEventListener('keydown', e => {
+  if (e.key === 'Enter') checkWingspan();
+});
+
+// "are you sure?" → open the video
+wingspanSure.addEventListener('click', () => {
+  window.open(SURE_VIDEO, '_blank', 'noopener');
+});
+
+// close the wingspan popup (X)
+document.getElementById('wingspan-close').addEventListener('click', () => {
+  wingspanPopup.classList.remove('visible');
+  wingspanInput.value = '';
+  wingspanFeed.textContent = '';
+});
+
+// ── READ ME → PAINT POEM ──────────────────────────────────
+function openPoem() {
+  readmePopup.classList.add('hiding');
+  readmePopup.addEventListener('animationend', () => {
+    readmePopup.style.display = 'none';
+  }, { once: true });
+  paintRoom.classList.add('open');
+}
+
+readmeOk.addEventListener('click', openPoem);
+readmeClose.addEventListener('click', openPoem);
+
+// ── EXIT POEM (X) → back to the TV room, reset for next time ──
+paintClose.addEventListener('click', () => {
+  paintRoom.classList.remove('open');
+  blissRoom.classList.remove('open');
+  readmePopup.classList.remove('hiding');
+  readmePopup.style.display = '';
 });
