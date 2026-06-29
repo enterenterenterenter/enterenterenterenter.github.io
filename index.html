@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>enterenterenterenter</title>
-  <link rel="stylesheet" href="style.css?v=2" />
+  <link rel="stylesheet" href="style.css?v=6" />
 </head>
 <body>
 
@@ -61,6 +61,119 @@
     </div>
   </div>
 
+  <!-- wingspan popup (bird riddle) -->
+  <div class="popup wingspan-popup" id="wingspan-popup">
+    <div class="popup-titlebar">
+      <span class="popup-icon">✦</span>
+      <span class="popup-title-text">wingspan.exe</span>
+      <span class="popup-controls">
+        <button class="ctrl-btn" tabindex="-1">_</button>
+        <button class="ctrl-btn" tabindex="-1">□</button>
+        <button class="ctrl-btn ctrl-x" id="wingspan-close" aria-label="close">✕</button>
+      </span>
+    </div>
+    <div class="popup-body">
+      <p class="popup-message">wingspan</p>
+      <input class="wingspan-input" id="wingspan-input" type="text" autocomplete="off"
+             inputmode="numeric" aria-label="enter answer" />
+      <div class="wingspan-btns">
+        <button class="popup-ok" id="wingspan-ok">OK</button>
+        <button class="popup-ok" id="wingspan-sure">are you sure?</button>
+      </div>
+      <p class="wingspan-feedback" id="wingspan-feedback" aria-live="polite"></p>
+    </div>
+  </div>
+
+  <!-- poem landing page (bliss) -->
+  <div class="bliss-room" id="bliss-room">
+    <div class="bliss-bg"></div>
+
+    <!-- XP-style error popup -->
+    <div class="xp-popup" id="readme-popup">
+      <div class="xp-titlebar">
+        <span class="xp-title-text">Error</span>
+        <button class="xp-close" id="readme-close" aria-label="close">✕</button>
+      </div>
+      <div class="xp-body">
+        <div class="xp-icon" aria-hidden="true">
+          <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="24" cy="24" r="22" fill="#e02020"/>
+            <circle cx="24" cy="24" r="22" fill="none" stroke="#a00000" stroke-width="2"/>
+            <path d="M15 15 L33 33 M33 15 L15 33" stroke="#fff" stroke-width="6" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <p class="xp-message">Read me!</p>
+      </div>
+      <div class="xp-footer">
+        <button class="xp-ok" id="readme-ok">OK</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MS Paint window with the poem -->
+  <div class="paint-room" id="paint-room">
+    <div class="paint-win">
+      <div class="paint-titlebar">
+        <span class="paint-title-icon" aria-hidden="true">🎨</span>
+        <span class="paint-title-text">13 to 6 - Paint</span>
+        <span class="paint-controls">
+          <button class="paint-ctrl" tabindex="-1">_</button>
+          <button class="paint-ctrl" tabindex="-1">▢</button>
+          <button class="paint-ctrl paint-close" id="paint-close" aria-label="close">✕</button>
+        </span>
+      </div>
+
+      <div class="paint-menubar">
+        <span><u>F</u>ile</span><span><u>E</u>dit</span><span><u>V</u>iew</span>
+        <span><u>I</u>mage</span><span><u>O</u>ptions</span><span><u>H</u>elp</span>
+      </div>
+
+      <div class="paint-main">
+        <div class="paint-tools">
+          <button class="paint-tool" tabindex="-1">✛</button><button class="paint-tool" tabindex="-1">▱</button>
+          <button class="paint-tool" tabindex="-1">◳</button><button class="paint-tool" tabindex="-1">▩</button>
+          <button class="paint-tool" tabindex="-1">⊘</button><button class="paint-tool" tabindex="-1">🔍</button>
+          <button class="paint-tool" tabindex="-1">✎</button><button class="paint-tool" tabindex="-1">🖌</button>
+          <button class="paint-tool" tabindex="-1">🪣</button><button class="paint-tool paint-tool-a" tabindex="-1">A</button>
+          <button class="paint-tool" tabindex="-1">╲</button><button class="paint-tool" tabindex="-1">⤴</button>
+          <button class="paint-tool" tabindex="-1">▭</button><button class="paint-tool" tabindex="-1">⬠</button>
+          <button class="paint-tool" tabindex="-1">◯</button><button class="paint-tool" tabindex="-1">▢</button>
+        </div>
+
+        <div class="paint-canvas">
+          <p class="paint-poem">I took six days peeling off the band-aid of New York City mile by mile. Skin, scab, hair. Rubber Road.
+
+Traveling inward on cruise control. Seventy, seventy five, eighty.
+
+Smashing into and onto the bay. Its off. Opaque. Feral. Map out of date. Maker as my captain. My delinquent Virgil.</p>
+        </div>
+      </div>
+
+      <div class="paint-palette">
+        <span class="sw" style="background:#000"></span><span class="sw" style="background:#808080"></span>
+        <span class="sw" style="background:#800000"></span><span class="sw" style="background:#808000"></span>
+        <span class="sw" style="background:#008000"></span><span class="sw" style="background:#008080"></span>
+        <span class="sw" style="background:#000080"></span><span class="sw" style="background:#800080"></span>
+        <span class="sw" style="background:#808040"></span><span class="sw" style="background:#004040"></span>
+        <span class="sw" style="background:#0080ff"></span><span class="sw" style="background:#004080"></span>
+        <span class="sw" style="background:#8000ff"></span><span class="sw" style="background:#804000"></span>
+        <span class="sw" style="background:#fff"></span><span class="sw" style="background:#c0c0c0"></span>
+        <span class="sw" style="background:#ff0000"></span><span class="sw" style="background:#ffff00"></span>
+        <span class="sw" style="background:#00ff00"></span><span class="sw" style="background:#00ffff"></span>
+        <span class="sw" style="background:#0000ff"></span><span class="sw" style="background:#ff00ff"></span>
+        <span class="sw" style="background:#ffff80"></span><span class="sw" style="background:#00ff80"></span>
+        <span class="sw" style="background:#80ffff"></span><span class="sw" style="background:#8080ff"></span>
+        <span class="sw" style="background:#ff0080"></span><span class="sw" style="background:#ff8040"></span>
+      </div>
+
+      <div class="paint-statusbar">
+        <span class="paint-status-cell">For Help, click Help Topics on the Help Menu.</span>
+        <span class="paint-status-cell paint-status-sm"></span>
+        <span class="paint-status-cell paint-status-sm"></span>
+      </div>
+    </div>
+  </div>
+
   <!-- mouth -->
   <div class="scene" id="scene">
     <div class="mouth-half mouth-top" id="mouth-top"></div>
@@ -90,8 +203,8 @@
   <div class="room-two" id="room-two">
 
     <!-- ── row 1 ── -->
-    <!-- shell 1: vintage wood CRT -->
-    <div class="tv-set" data-room="3" style="--tx:2%;--ty:2%;--tw:215px;--tr:-2deg">
+    <!-- shell 1: vintage wood CRT — the flying bird (wingspan riddle) -->
+    <div class="tv-set" id="bird-tv" data-room="3" style="--tx:2%;--ty:2%;--tw:215px;--tr:-2deg">
       <div class="tv-screen" style="--sl:8.5%;--st:24.2%;--sw:64.5%;--sh:46.7%">
         <img class="tv-gif" src="assets/tv 1.gif" alt="">
       </div>
@@ -204,6 +317,6 @@
   <div class="deep-room" id="room-13"><span>room 13</span></div>
   <div class="deep-room" id="room-14"><span>room 14</span></div>
 
-  <script src="script.js?v=4"></script>
+  <script src="script.js?v=8"></script>
 </body>
 </html>
